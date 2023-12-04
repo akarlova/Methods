@@ -16,18 +16,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Please, enter the sum of the purchase: ");
-        purchaseValue = sc.nextDouble();
-        discount = calcDiscount(purchaseValue);
-        discountValue = calcDiscountValue(discount, purchaseValue);
-        pureValue = calcForPayment(purchaseValue, discountValue);
-        purchaseValueRounded = roundData(purchaseValue);
-        discountValueRounded = roundData(discountValue);
-        forPaymentRounded = roundData(pureValue);
-
+        handleData();
         getOutput();
-        sc.close();
+
     }
 
     private static void getOutput() {
@@ -36,6 +27,24 @@ public class Main {
                 + CURRENCY + "\nSum for payment is " + forPaymentRounded +
                 " " + CURRENCY);
     }
+
+    private static void handleData() {
+
+        purchaseValue = getData();
+        discount = calcDiscount(purchaseValue);
+        discountValue = calcDiscountValue(discount, purchaseValue);
+        pureValue = calcForPayment(purchaseValue, discountValue);
+        purchaseValueRounded = roundData(purchaseValue);
+        discountValueRounded = roundData(discountValue);
+        forPaymentRounded = roundData(pureValue);
+    }
+
+    private static double getData() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please, enter the sum of the purchase: ");
+        return sc.nextDouble();
+    }
+
 
     private static double calcDiscount(double purchase) {
 
